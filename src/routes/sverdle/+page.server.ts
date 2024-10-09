@@ -2,13 +2,13 @@ import { fail } from "@sveltejs/kit";
 import { Game } from "./game";
 import type { PageServerLoad, Actions } from "./$types";
 
-import { ABC } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 
 export const load = (({ cookies }) => {
   const game = new Game(cookies.get("sverdle"));
 
   return {
-    junk: ABC,
+    junk: env.ABC,
     /**
      * The player's guessed words so far
      */
